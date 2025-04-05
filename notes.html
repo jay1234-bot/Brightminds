@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes - Bright Minds</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .notes-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 5%;
+            text-align: center;
+        }
+
+        .notes-container {
+            display: flex;
+            gap: 2rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .notes-button {
+            background: var(--gradient-primary);
+            padding: 2rem 4rem;
+            border-radius: 15px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border: none;
+            cursor: pointer;
+            color: var(--background-color);
+        }
+
+        .notes-button::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(transparent, rgba(255, 255, 255, 0.3), transparent 30%);
+            animation: rotate 4s linear infinite;
+        }
+
+        .notes-button:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+        }
+
+        .notes-button span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .construction-message {
+            display: none;
+            margin-top: 2rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .construction-message.show {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo-container">
+            <div class="logo-circle">
+                <div class="logo-placeholder">BM</div>
+            </div>
+            <div class="logo-text">Bright Minds</div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="#" class="nav-link active">Notes</a></li>
+            <li><a href="privacy-policy.html" target="_blank" class="nav-link">Privacy Policy</a></li>
+        </ul>
+    </nav>
+
+    <section class="notes-section">
+        <h1 class="glow-text">Class Notes</h1>
+        <p>Select your class to access the study materials</p>
+        
+        <div class="notes-container">
+            <button class="notes-button" onclick="showConstructionMessage()">
+                <span>Class 9 Notes</span>
+            </button>
+            <button class="notes-button" onclick="showConstructionMessage()">
+                <span>Class 10 Notes</span>
+            </button>
+        </div>
+
+        <div class="construction-message" id="constructionMessage">
+            <h2>🚧 Under Construction 🚧</h2>
+            <p>We're working hard to bring you the best study materials. Please check back soon! 🏗️</p>
+        </div>
+    </section>
+
+    <script>
+        function showConstructionMessage() {
+            const message = document.getElementById('constructionMessage');
+            message.classList.add('show');
+            setTimeout(() => {
+                message.classList.remove('show');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
